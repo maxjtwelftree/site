@@ -1,78 +1,81 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { formatDate } from "../lib/formatDate";
-import { Link } from "../lib/Link";
-import { Paragraph } from "../lib/prose/Paragraph";
-import type { PostFrontmatter } from "../types";
+import Project from "../components/Project.astro";
+import { getProjects } from '../lib/projects';
+import Link from '../components/Link.astro';
+import '@mdi/font/css/materialdesignicons.min.css';
 
-let posts = await Astro.glob<PostFrontmatter>("../../posts/**/*.mdx");
-
-if (import.meta.env.PROD) {
-  posts = posts.filter((post) => !post.frontmatter.draft);
-}
-
-posts.sort((a, b) => {
-  return (
-    new Date(b.frontmatter.date).getTime() -
-    new Date(a.frontmatter.date).getTime()
-  );
-});
+const projects = await getProjects();
+const title = "Max Twelftree";
+const description = "Astro starter template for understated personal websites using Solid.js, Tailwind CSS, and MDX.";
 ---
 
-<BaseLayout
-  title="zaduma"
-  description="Astro starter template for understated personal websites using Solid.js, Tailwind CSS, and MDX."
->
-  <h1 slot="header-content" class="text-gray-600 dark:text-gray-500">zaduma</h1>
+<BaseLayout title={title} description={description}>
+  <h1 slot="header-content" class="text-gray-600 dark:text-gray-500">Max Twelftree</h1>
   <main class="py-10 zaduma-prose">
-    <Paragraph>
-      <small class="text-gray-600 dark:text-gray-500"
-        >IPA /zaˈdu.ma/ — reverie, musing</small
-      >
-      <br />
-       is an Astro starter template for understated personal websites
-    </Paragraph>
-    <Paragraph class="mt-6">
-      Learn about it by reading the articles below, take a look at the
-      <Link href="https://github.com/hasparus/zaduma">readme</Link>, or boldly
-      <Link href="https://github.com/hasparus/zaduma/generate">
-        {"create a new repository"}
-      </Link>. I wish you a pleasant journey.
-    </Paragraph>
-  </main>
-  <ul>
-    {
-      posts.map(({ frontmatter }) => {
-        const date = new Date(frontmatter.date);
+    <p class="text-gray-600 dark:text-gray-500" style="font-size: 12px;"> ◕ ◡ ◕ っ </p>
+    <p>
+      Hey, I’m <strong>Max!</strong> I'm currently an undergraduate student majoring in <strong>computer science</strong> at <strong>The University of Adelaide, Australia</strong>. I enjoy creating software, taking on challenges and am a passionate competitive programmer.
+    </p>
+    <p>
+      Besides computer science, I enjoy <strong>weightlifting, language learning</strong> and <strong>travelling</strong>. Please <strong>reach out</strong> if you're interested in collaborating or want to talk about anything to do with computer science, weightlifting, competitive programming or the nuances of language learning.
+    </p>
+    <p>
+      Right now I'm working on various projects, both private and open sourced. Feel free to check them out <strong>below</strong>.
+    </p>
 
-        return (
-          <li>
-            <Link
-              href={frontmatter.path}
-              class="flex flex-row gap-2 justify-between"
-              noUnderline
-            >
-              <h2 class="text-gray-800 dark:text-gray-300 font-sans">
-                {frontmatter.title}
-              </h2>
-              <time
-                datetime={date.toISOString()}
-                class="text-gray-600 dark:text-gray-400 tabular-nums tracking-tighter shrink-0"
-              >
-                {formatDate(date)}
-              </time>
-            </Link>
-          </li>
-        );
-      })
-    }
-  </ul>
-  <style>
-    ul:hover li:not(:hover) :where(h2, time) {
-      @apply text-gray-600 transition-colors;
-      :global(.dark) & {
-        @apply text-gray-500;
-      }
-    }
-  </style>
-</BaseLayout>
+    <h2 style="font-size: 18px; font-weight: bold;">Projects</h2>
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+      {projects.map(project => <Project project={project} />)}
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="prose">
+      <hr />
+      <br>
+      <footer>
+        <div class="name-container">
+          <span>Max Twelftree</span>
+        </div>
+        <div class="icons-container">
+          <a href="mailto:maxjtwelftree@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/maxjtwelftree" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/maxjtwelftree/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </footer>
+    </div>
+  </main>
+<style>
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0; /* Remove padding to align with the footer line */
+}
+
+footer .name-container {
+  margin-left: 0px; /* Add margin to the left of the name */
+}
+
+footer .icons-container {
+  display: flex;
+  gap: 20px;
+  margin-right: 0px; /* Add margin to the right of the icons */
+}
+
+footer a {
+  margin: 0; /* Reset any default margins */
+  color: inherit; /* Inherit text color from parent, or set a specific color */
+}
+
+footer a i {
+  font-size: 24px; /* Adjust the icon size as needed */
+}

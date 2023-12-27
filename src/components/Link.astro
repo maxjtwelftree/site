@@ -1,0 +1,21 @@
+---
+const { href } = Astro.props;
+const isExternal = href.startsWith('http');
+---
+
+<style>
+  .link {
+    text-decoration: underline;
+    text-decoration-color: #64748b;
+    text-underline-offset: 4px;
+    transition: color 0.3s, text-decoration-color 0.3s; /* Transition only color and text-decoration-color */
+  }
+
+  .link:hover {
+    text-decoration-color: #475569; /* Lighten the underline color on hover */
+  }
+</style>
+
+<a href={href} target={isExternal ? '_blank' : '_self'} class="link">
+  <slot />
+</a>

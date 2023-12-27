@@ -1,6 +1,7 @@
 ---
 import brygadaPath from "@fontsource-variable/brygada-1918/files/brygada-1918-latin-wght-italic.woff2";
 import interPath from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2";
+import '@mdi/font/css/materialdesignicons.min.css';
 
 import InitColorScheme from "../lib/color-scheme/InitColorScheme.astro";
 import { Commands } from "../lib/Commands";
@@ -36,6 +37,7 @@ const posts = (await Astro.glob<PostFrontmatter>("../../posts/**/*.mdx"))
 posts.sort((a, b) => {
   return new Date(b.date).getTime() - new Date(a.date).getTime();
 });
+
 ---
 
 <html lang="en">
@@ -58,7 +60,26 @@ posts.sort((a, b) => {
     <SocialCardMetaTags ogImage={ogImage} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Adding Font Awesome stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Styles for footer icons -->
+    <style>
+      /* Adjusts the spacing to 5px on the left and right for icons */
+      .footer-icons i {
+          margin: 0 5px;
+      }
 
+      /* Adjusts the spacing to the right and left of each anchor tag */
+      .footer-icons a {
+          margin-right: 5px;
+          margin-left: 5px;
+      }
+
+      /* Removes the right margin on the last anchor tag */
+      .footer-icons a:last-child {
+          margin-right: 0;
+      }
+    </style>
     <title>{title}</title>
     <InitColorScheme />
   </head>
