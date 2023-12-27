@@ -4,10 +4,11 @@ interface Props {
 }
 
 let { ogImage } = Astro.props;
+const baseUrl = 'https://maxjtwelftree.vercel.app';
 
 if (ogImage) {
   ogImage = ogImage.startsWith("/api/og")
-    ? new URL(ogImage, import.meta.env.PUBLIC_URL).href
+    ? new URL(ogImage, baseUrl).href
     : ogImage;
 }
 ---
