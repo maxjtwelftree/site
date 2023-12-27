@@ -6,10 +6,20 @@ interface Props {
 let { ogImage } = Astro.props;
 const baseUrl = 'https://maxjtwelftree.vercel.app';
 
+// Add debugging logs
+console.log('ogImage before processing:', ogImage);
+console.log('Base URL:', baseUrl);
+
 if (ogImage) {
-  ogImage = ogImage.startsWith("/api/og")
-    ? new URL(ogImage, baseUrl).href
-    : ogImage;
+  try {
+    ogImage = ogImage.startsWith("/api/og")
+      ? new URL(ogImage, baseUrl).href
+      : ogImage;
+    console.log('Full ogImage URL:', ogImage);
+  } catch (error) {
+    console.error('Error constructing full ogImage URL:', error.message);
+    ogImage = undefined; // Fallback if the URL is invalid
+  }
 }
 ---
 
