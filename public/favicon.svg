@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <circle cx="50" cy="50" r="50" fill="rgb(23 23 23)" />
-  <text x="50" y="50" font-size="90" dominant-baseline="middle" text-anchor="middle" fill="white">𝒛</text>
+  <text x="50" y="50" font-size="90" dominant-baseline="middle" text-anchor="middle" fill="white">m</text>
 	<style>
     text{fill:rgb(38 38 38);}
     circle{fill:rgb(255 255 255);}
