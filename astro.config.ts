@@ -4,7 +4,6 @@ import tailwind from "@astrojs/tailwind";
 import { defineConfig } from "astro/config";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import '@mdi/font/css/materialdesignicons.min.css';
 
 import { rehypePlugins, remarkPlugins } from "./src/build-time";
 
