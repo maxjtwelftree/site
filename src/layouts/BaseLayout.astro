@@ -90,7 +90,6 @@ posts.sort((a, b) => {
         <slot name="header-content">
           <Link href="/">← back</Link>
         </slot>
-        <Commands client:load posts={posts} />
       </header>
       <slot />
       <GrainOverlay opacity={0.25} />
