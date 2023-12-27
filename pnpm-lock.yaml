@@ -31,6 +31,9 @@ dependencies:
   '@fontsource-variable/inter':
     specifier: ^5.0.8
     version: 5.0.8
+  '@mdi/font':
+    specifier: ^7.4.47
+    version: 7.4.47
   '@mdx-js/mdx':
     specifier: 2.2.1
     version: 2.2.1(patch_hash=xpblqcf4nverltfcba52wyvqbi)
@@ -1198,6 +1201,10 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
+    dev: false
+
+  /@mdi/font@7.4.47:
+    resolution: {integrity: sha512-43MtGpd585SNzHZPcYowu/84Vz2a2g31TvPMTm9uTiCSWzaheQySUcSyUH/46fPnuPQWof2yd0pGBtzee/IQWw==}
     dev: false
 
   /@mdx-js/mdx@2.2.1(patch_hash=xpblqcf4nverltfcba52wyvqbi):
