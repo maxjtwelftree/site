@@ -25,27 +25,27 @@ export async function getProjects(): Promise<Project[]> {
     {
       repo: "kuma-ui",
       link: "https://github.com/kuma-ui/kuma-ui",
-      description: "A headless, utility-first, zero-runtime UI component library",
+      description: "Adding missing features to an amazing UI component library",
     },
     {
-      repo: "facial-recognition-system",
-      link: "https://github.com/maxjtwelftree",
-      description: "Designing a facial recognition system in Django",
+      repo: "skift",
+      link: "https://github.com/skift-org/skift",
+      description: "Using C++20 coroutines for an awesome open source OS",
     },
     {
       repo: "maxjtwelftree.dev",
       link: "https://github.com/maxjtwelftree/maxjtwelftree.dev",
-      description: "This small site built with Astro",
+      description: "This small boring site built with Astro",
     },
     {
       repo: "lexi-learn",
       link: "https://github.com/maxjtwelftree",
-      description: "A react native application aiding dyslexic students difficulties",
+      description: "A react native application built with my younger sister for dyslexic students",
     },
     {
       repo: "painter.io",
       link: "https://github.com/vas-byte/Painter.IO",
-      description: "A bird's-eye-view paintball battle royale",
+      description: "Developed a bird's-eye-view paintball battle royale",
     },
     {
       repo: "french-fusion",
