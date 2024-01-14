@@ -28,14 +28,14 @@ export async function getProjects(): Promise<Project[]> {
       description: "Adding missing features to an amazing UI component library",
     },
     {
-      repo: "skift",
-      link: "https://github.com/skift-org/skift",
-      description: "Using C++20 coroutines for an awesome open source OS",
+      repo: "async-library",
+      link: "https://github.com/maxjtwelftree/Async-Computation-Library",
+      description: "Using C++20 coroutines for an some fun threading stuff",
     },
     {
-      repo: "maxjtwelftree.dev",
-      link: "https://github.com/maxjtwelftree/maxjtwelftree.dev",
-      description: "This small boring site built with Astro",
+      repo: "llvm",
+      link: "https://github.com/llvm/llvm-project",
+      description: "Contributing with cool people to LLVM as I explore compilers and low level topics",
     },
     {
       repo: "lexi-learn",
