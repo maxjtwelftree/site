@@ -23,12 +23,12 @@ export type Project = z.infer<typeof projectSchema>;
 export async function getProjects(): Promise<Project[]> {
   return [
     {
-      repo: "research with <em>MIT's Media Lab</em>",
+      repo: "research with <em style='font-style: italic;'>MIT's Media Lab</em>",
       link: "https://github.com/zlshinnick/ai-safety",
       description: "Exploring and adapting safety within AI systems",
     },
     {
-      repo: "an attempt at a statistical arbitrage neural network",
+      repo: "statistical arbitrage neural network (attempt)",
       link: "https://github.com/maxjtwelftree/Statistical-Arbitrage-Neural-Network",
       description: "Using C++20 coroutines for an some fun threading stuff",
     },
