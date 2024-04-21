@@ -23,19 +23,19 @@ export type Project = z.infer<typeof projectSchema>;
 export async function getProjects(): Promise<Project[]> {
   return [
     {
-      repo: "kuma-ui",
-      link: "https://github.com/kuma-ui/kuma-ui",
-      description: "Adding missing features to an amazing UI component library",
+      repo: "research with <em>MIT's Media Lab</em>",
+      link: "https://github.com/zlshinnick/ai-safety",
+      description: "Exploring and adapting safety within AI systems",
     },
     {
-      repo: "async-library",
-      link: "https://github.com/maxjtwelftree/Async-Computation-Library",
+      repo: "an attempt at a statistical arbitrage neural network",
+      link: "https://github.com/maxjtwelftree/Statistical-Arbitrage-Neural-Network",
       description: "Using C++20 coroutines for an some fun threading stuff",
     },
     {
-      repo: "llvm",
-      link: "https://github.com/llvm/llvm-project",
-      description: "Contributing with cool people to LLVM as I explore compilers and low level topics",
+      repo: "kuma-ui",
+      link: "https://github.com/kuma-ui/kuma-ui",
+      description: "Adding some missing features to an amazing UI component library",
     },
     {
       repo: "lexi-learn",
