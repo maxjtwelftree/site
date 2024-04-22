@@ -1,0 +1,16 @@
+import type { Writing } from "../lib/writings"
+import Link from '../components/Link.astro';
+type Props = {
+  writing: Writing
+}
+
+const { writing: { title: date, link } } = Astro.props
+---
+
+<div class="w-20.6666666666666666666666666666666666666666666666667ch flex flex-col">
+  <Link href={link}>
+    <span class="font-medium">{name}</span>
+  </Link>
+
+  <span class="pt-3">{description}</span>
+</div>

@@ -1,35 +1,84 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Project from "../components/Project.astro";
+import Writing from "../components/Writing.astro";
 import { getProjects } from '../lib/projects';
+import { getWritings } from '../lib/writings';
 import Link from '../components/Link.astro';
+import { Paragraph } from "../lib/prose/Paragraph";
+import { formatDate } from "../lib/formatDate";
+import border_color from '../components/Link.astro';
 
+
+let posts = await Astro.glob<PostFrontmatter>("../../posts/**/*.mdx");
 const projects = await getProjects();
+const writings =  await getWritings();
 const title = "Max Twelftree";
 const description = "My small website for projects, experience and further information";
+
+if (import.meta.env.PROD) {
+  posts = posts.filter((post) => !post.frontmatter.draft);
+}
+
+posts.sort((a, b) => {
+  return (
+    new Date(b.frontmatter.date).getTime() -
+    new Date(a.frontmatter.date).getTime()
+  );
+});
+
 ---
 
 <BaseLayout title={title} description={description}>
-  <h1 slot="header-content" class="text-gray-600 dark:text-gray-500">Max Twelftree</h1>
+<h1 slot="header-content" class="text-gray-600 dark:text-gray-500 mt-2"><Link href="https://maxjtwelftree.vercel.app">Max Twelftree</Link></h1>
   <main class="py-10 zaduma-prose">
-    <p class="text-gray-600 dark:text-gray-500" style="font-size: 12px;"> ◕ ◡ ◕ っ </p>
+    <p class="text-gray-600 dark:text-gray-500 mb-2" style="font-size: 12px;"> ◕ ◡ ◕ っ </p>
     <p>
-      Hey, I’m <strong>Max!</strong> I'm currently an undergraduate student majoring in <strong>computer science</strong>, with a strong passion for creating software and taking on challenges.
+      Hey, I’m <strong>Max!</strong> I'm currently an undergraduate student majoring in <strong>computer science,</strong> with a strong passion for creating software and taking on challenges.
     </p>
     <p>
-      Besides computer science, I enjoy <strong>photography, design, weightlifting, language learning</strong> and <strong>travelling</strong>. Please <strong>reach out</strong> if you're interested in collaborating or want to talk about anything to do with computer science, weightlifting, design or the nuances of language learning.
+    Besides computer science, I enjoy <em><Link href="/travels" style="italic">travelling,</Link></em> weightlifting, language learning, and design. Please <strong>reach out</strong> if you're interested in collaborating or just want to talk. 
+    <br>
+    <br>
+    Right now I'm working on various projects, both private and open sourced. Feel free to check some out <strong>below</strong>.
     </p>
-    <p>
-      Right now I'm working on various projects, both private and open sourced. Feel free to check them out <strong>below</strong>.
-    </p>
+
+    <hr class="border_color">
 
     <h2 style="font-size: 18px; font-weight: bold;">Projects</h2>
     <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
       {projects.map(project => <Project project={project} />)}
     </div>
-    <br>
-    <br>
-    <br>
+
+    <hr class="border_color">
+
+    <h2 style="font-size: 18px; font-weight: bold;">Texts</h2>
+    <ul>
+      {posts.map(({ frontmatter }) => {
+        const date = new Date(frontmatter.date);
+
+        return (
+          <li class="flex justify-between items-center">
+            <Link
+              href={frontmatter.path}
+              class="flex-grow"
+              noUnderline
+            >
+              <h2 class="text-gray-800 dark:text-gray-300 font-sans mb-3">
+                {frontmatter.title}
+              </h2>
+            </Link>
+            <time
+              datetime={date.toISOString()}
+              class="text-gray-600 dark:text-gray-400 tabular-nums tracking-tighter"
+            >
+              {formatDate(date)}
+            </time>
+          </li>
+        );
+      })
+    }
+    </ul>
 
     <div class="prose">
       <hr />
@@ -48,8 +97,8 @@ const description = "My small website for projects, experience and further infor
           <a href="https://www.linkedin.com/in/maxjtwelftree/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
-          <a href="/maxtwelftree-resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-            <i class="fas fa-file-pdf"></i> <!-- Replace with your PDF icon or use an emoji/text -->
+          <a href="https://twitter.com/mxwelllllll" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
           </a>
         </div>
       </footer>
