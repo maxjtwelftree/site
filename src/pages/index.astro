@@ -52,7 +52,7 @@ posts.sort((a, b) => {
 
     <hr class="border_color">
 
-    <h2 style="font-size: 18px; font-weight: bold;">Texts</h2>
+    <h2 style="font-size: 18px; font-weight: bold;">Writing</h2>
     <ul>
       {posts.map(({ frontmatter }) => {
         const date = new Date(frontmatter.date);
@@ -64,7 +64,7 @@ posts.sort((a, b) => {
               class="flex-grow"
               noUnderline
             >
-              <h2 class="text-gray-800 dark:text-gray-300 font-sans mb-3">
+              <h2 class="text-gray-800 dark:text-gray-300 font-sans mb-4">
                 {frontmatter.title}
               </h2>
             </Link>
