@@ -28,10 +28,9 @@ export async function getProjects(): Promise<Project[]> {
       description: "Exploring and adapting safety within AI systems",
     },
     {
-      repo: "kuma-ui",
-      link: "https://github.com/kuma-ui/kuma-ui",
-      description:
-        "Adding some missing features to an amazing UI component library",
+      repo: "komorebi",
+      link: "/zen",
+      description: "A mindfulness app inspired by Thich Nhat Hanh",
     },
     {
       repo: "bin-packing",
