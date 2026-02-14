@@ -5,13 +5,13 @@ type Props = {
   writing: Writing
 }
 
-const { writing: { title: date, link } } = Astro.props
+const { writing: { title, date, link } } = Astro.props
 ---
 
 <div class="w-20.6666666666666666666666666666666666666666666666667ch flex flex-col">
   <Link href={link}>
-    <span class="font-medium">{name}</span>
+    <span class="font-medium">{title}</span>
   </Link>
 
-  <span class="pt-3">{description}</span>
+  <span class="pt-3">{date}</span>
 </div>
