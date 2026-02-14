@@ -76,6 +76,9 @@ dependencies:
   solid-js:
     specifier: ^1.7.11
     version: 1.7.11
+  sonner:
+    specifier: ^1.4.41
+    version: 1.7.4(react-dom@19.2.4)(react@19.2.4)
   tailwindcss:
     specifier: ^3.3.3
     version: 3.3.3
@@ -6384,9 +6387,23 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
+  /react-dom@19.2.4(react@19.2.4):
+    resolution: {integrity: sha512-AXJdLo8kgMbimY95O2aKQqsz2iWi9jMgKJhRBAxECE4IFxfcazB2LmzloIoibJI3C12IlY20+KFaLv+71bUJeQ==}
+    peerDependencies:
+      react: ^19.2.4
+    dependencies:
+      react: 19.2.4
+      scheduler: 0.27.0
+    dev: false
+
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: true
+
+  /react@19.2.4:
+    resolution: {integrity: sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /read-cache@1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
@@ -6712,6 +6729,10 @@ packages:
       yoga-wasm-web: 0.3.3
     dev: false
 
+  /scheduler@0.27.0:
+    resolution: {integrity: sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==}
+    dev: false
+
   /section-matter@1.0.0:
     resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==}
     engines: {node: '>=4'}
@@ -6874,6 +6895,16 @@ packages:
       '@babel/helper-module-imports': 7.22.15
       '@babel/types': 7.22.17
       solid-js: 1.7.11
+    dev: false
+
+  /sonner@1.7.4(react-dom@19.2.4)(react@19.2.4):
+    resolution: {integrity: sha512-DIS8z4PfJRbIyfVFDVnK9rO3eYDtse4Omcm6bt0oEr5/jtLgysmjuBl1frJ9E/EQZrFmKx2A8m/s5s9CRXIzhw==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+      react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+    dependencies:
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
     dev: false
 
   /source-map-js@1.0.2:
