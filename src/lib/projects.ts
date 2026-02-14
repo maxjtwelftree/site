@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 const projectSchema = z.object({
   repo: z.string(),
@@ -30,27 +30,13 @@ export async function getProjects(): Promise<Project[]> {
     {
       repo: "kuma-ui",
       link: "https://github.com/kuma-ui/kuma-ui",
-      description: "Adding some missing features to an amazing UI component library",
+      description:
+        "Adding some missing features to an amazing UI component library",
     },
     {
-      repo: "statistical arbitrage fun",
-      link: "https://github.com/maxjtwelftree/Statistical-Arbitrage-Neural-Network",
-      description: "Attempted to build a neural network that traded on a BP/XOM spread",
-    },
-    {
-      repo: "lexi-learn",
-      link: "https://github.com/maxjtwelftree",
-      description: "A react native application built with my younger sister for dyslexic students",
-    },
-    {
-      repo: "painter.io",
-      link: "https://github.com/vas-byte/Painter.IO",
-      description: "Developed a bird's-eye-view paintball battle royale",
-    },
-    {
-      repo: "french-fusion",
-      link: "https://github.com/maxjtwelftree/French-Fusion",
-      description: "A language learning application, challenging French learners",
+      repo: "bin-packing",
+      link: "https://github.com/maxjtwelftree/bin-packing",
+      description: "Draft of a bin-packing solution under the AIML scholarship",
     },
   ];
 }

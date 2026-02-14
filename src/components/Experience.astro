@@ -1,0 +1,18 @@
+---
+import type { Experience } from "../lib/experience"
+
+type Props = {
+  experience: Experience
+}
+
+const { experience: { role, company, start, end, duration, emoji } } = Astro.props
+---
+
+<div class="flex justify-between items-center py-2">
+  <div>
+    <span class="font-medium">{role}</span>
+    <div class="text-gray-600 dark:text-gray-400 text-sm">{company}</div>
+    <div class="text-gray-500 dark:text-gray-500 text-xs">{start} – {end} · {duration}</div>
+  </div>
+  <span class="text-2xl ml-4 flex-shrink-0">{emoji}</span>
+</div>

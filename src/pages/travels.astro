@@ -2,23 +2,148 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Link from '../components/Link.astro';
 const title = "Recent Travels";
-const description = "My crappy photos";
+const description = "Some of the places I've been lucky enough to visit more recently :)";
 
+const countries = [
+  {
+    flag: "🇪🇬",
+    name: "Egypt",
+    recent: false,
+    photos: [
+      { src: "/photos/giza.JPG", caption: "Giza" },
+      { src: "/photos/egyptmosque.jpg", caption: "Cairo" },
+      { src: "/photos/fav.JPG", caption: "Egypt" },
+      { src: "/photos/inshallah.jpg", caption: "Egypt" },
+    ],
+  },
+  {
+    flag: "🇯🇴",
+    name: "Jordan",
+    recent: false,
+    photos: [
+      { src: "/photos/wadi.JPG", caption: "Wadi Rum" },
+      { src: "/photos/jordanboys.jpg", caption: "Jordan" },
+    ],
+  },
+  {
+    flag: "🇲🇳",
+    name: "Mongolia",
+    recent: false,
+    photos: [
+      { src: "/photos/mongolia.jpg", caption: "Mongolia" },
+      { src: "/photos/yurt.jpg", caption: "Yurt" },
+    ],
+  },
+  {
+    flag: "🇴🇲",
+    name: "Oman",
+    recent: false,
+    photos: [
+      { src: "/photos/muscat.jpg", caption: "Muscat" },
+      { src: "/photos/oman.jpg", caption: "Oman" },
+    ],
+  },
+  {
+    flag: "🇰🇷",
+    name: "South Korea",
+    recent: false,
+    photos: [
+      { src: "/photos/korea.jpg", caption: "Korea" },
+      { src: "/photos/korea2.jpg", caption: "Korea" },
+    ],
+  },
+  {
+    flag: "🇹🇼",
+    name: "Taiwan",
+    recent: false,
+    photos: [
+      { src: "/photos/taiwan.jpg", caption: "Taiwan" },
+      { src: "/photos/taiwan2.jpg", caption: "Taiwan" },
+    ],
+  },
+  {
+    flag: "🇯🇵",
+    name: "Japan",
+    photos: [
+      { src: "/photos/kyoto.jpg", caption: "Kyoto" },
+      { src: "/photos/Japan.png", caption: "Japan" },
+    ],
+  },
+  {
+    flag: "🇺🇸",
+    name: "United States",
+    photos: [
+      { src: "/photos/dumbo.jpg", caption: "DUMBO, NYC" },
+      { src: "/photos/brooklyn.jpg", caption: "USA" },
+    ],
+  },
+  {
+    flag: "🇻🇳",
+    name: "Vietnam",
+    photos: [
+      { src: "/photos/hanoi.jpg", caption: "Hanoi" },
+        { src: "/photos/hanoi2.jpg", caption: "Vietnam" },
+    ],
+  },
+  {
+    flag: "🇹🇭",
+    name: "Thailand",
+    photos: [
+      { src: "/photos/chiangmai.jpg", caption: "Chiang Mai" },
+      { src: "/photos/thailandagain.jpg", caption: "Thailand" },
+    ],
+  },
+  {
+    flag: "🇮🇹",
+    name: "Italy",
+    photos: [
+      { src: "/photos/Tuscany.jpg", caption: "Tuscany" },
+      { src: "/photos/Venice.jpg", caption: "Venice" },
+    ],
+  },
+  {
+    flag: "🇦🇺",
+    name: "Australia",
+    photos: [
+      { src: "/photos/Falls.jpg", caption: "Falls" },
+      { src: "/photos/Nora.jpg", caption: "Noarlunga" },
+    ],
+  },
+];
 ---
 
 <BaseLayout title={title} description={description}>
 <h1 slot="header-content" class="text-gray-600 dark:text-gray-500 mt-2"><Link href="/">Max Twelftree</Link></h1>
-    <main class="py-10 zaduma-prose">
-    <h2 slot="header-content" class="text-gray-600 dark:text-gray-500 mb-2">Recent Travels</h1>
-    <br>
-    <h2 slot="header-content" class="text-gray-600 dark:text-gray-500">🇯🇵</h1>
-        <img src="/photos/Niseko.jpg" style="width: 100%;" />
-        <img src="/photos/Tokyo.jpg" style="width: 100%;" />
-    <h2 slot="header-content" class="text-gray-600 dark:text-gray-500">🇮🇹</h1>
-        <img src="/photos/Tuscany.jpg" style="width: 100%;" />
-        <img src="/photos/Venice.jpg" style="width: 100%;" />
-    <h2 slot="header-content" class="text-gray-600 dark:text-gray-500">🇦🇺</h1>
-        <img src="/photos/Falls.jpg" style="width: 100%;" />
-        <img src="/photos/Nora.jpg" style="width: 100%;" />
+  <main class="py-10 zaduma-prose">
+    <h2 class="text-2xl font-bold mb-1">Recent Travels</h2>
+    <p class="text-gray-500 dark:text-gray-400 text-sm mb-8">Some of the places I've been lucky enough to visit recently :)</p>
 
-    </main>
+    {countries.map((country) => (
+      <section class="mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-3xl">{country.flag}</span>
+          <h3 class="text-lg font-semibold">{country.name}</h3>
+          {country.recent && (
+            <span class="text-xs bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 px-2 py-0.5 rounded-full">recent</span>
+          )}
+        </div>
+        <div class:list={[
+          "grid gap-3",
+          country.photos.length === 1 ? "grid-cols-1" : "grid-cols-2"
+        ]}>
+          {country.photos.map((photo) => (
+            <div class="overflow-hidden rounded-lg">
+              <img
+                src={photo.src}
+                alt={photo.caption}
+                class="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+</BaseLayout>

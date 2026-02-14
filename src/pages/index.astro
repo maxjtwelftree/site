@@ -2,8 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Project from "../components/Project.astro";
 import Writing from "../components/Writing.astro";
+import Experience from "../components/Experience.astro";
 import { getProjects } from '../lib/projects';
 import { getWritings } from '../lib/writings';
+import { getExperience } from '../lib/experience';
 import Link from '../components/Link.astro';
 import { Paragraph } from "../lib/prose/Paragraph";
 import { formatDate } from "../lib/formatDate";
@@ -13,6 +15,7 @@ import border_color from '../components/Link.astro';
 let posts = await Astro.glob<PostFrontmatter>("../../posts/**/*.mdx");
 const projects = await getProjects();
 const writings =  await getWritings();
+const experience = await getExperience();
 const title = "Max Twelftree";
 const description = "My small website for projects, experience and further information";
 
@@ -34,14 +37,19 @@ posts.sort((a, b) => {
   <main class="py-10 zaduma-prose">
     <p class="text-gray-600 dark:text-gray-500 mb-2" style="font-size: 12px;"> ◕ ◡ ◕ っ </p>
     <p>
-      Hey, I’m <strong>Max!</strong> I'm currently an undergraduate student majoring in <strong>computer science,</strong> with a strong passion for creating software and taking on challenges.
+      Hey, I’m <strong>Max!</strong> I'm currently a software engineer based in Australia 🇦🇺. Recently I completed a <i>Bachelors degree in Mathematics and Computer Science</i> from the <strong>University of Adelaide</strong>. I have a strong passion for new technologies particularly those in machine learning infrastructure, as well as design and its relationship to software engineering.
     </p>
     <p>
-    Besides computer science, I enjoy <em><Link href="/travels" style="italic">travelling,</Link></em> weightlifting, language learning, and design. Please <strong>reach out</strong> if you're interested in collaborating or just want to talk. 
+    Besides software, I enjoy <em><Link href="/travels" style="italic">travelling,</Link></em> fitness, religion, philosophy, geo-politics, and other parts of design. Please <strong>reach out</strong> if you're interested in collaborating or just want to talk.
     <br>
-    <br>
-    Right now I'm working on various projects, both private and open sourced. Feel free to check some out <strong>below</strong>.
     </p>
+
+    <hr class="border_color">
+
+    <h2 style="font-size: 18px; font-weight: bold;">Experience</h2>
+    <div class="divide-y divide-gray-200 dark:divide-gray-800">
+      {experience.map(exp => <Experience experience={exp} />)}
+    </div>
 
     <hr class="border_color">
 
@@ -51,6 +59,14 @@ posts.sort((a, b) => {
     </div>
 
     <hr class="border_color">
+
+    <h2 style="font-size: 18px; font-weight: bold;"><Link href="/travels">Travels</Link></h2>
+    <p class="text-gray-500 dark:text-gray-400 text-sm" style="margin-bottom: 0.5rem;">Photos from some of the places I've been to recently.</p>
+    <div class="travels-list">
+      <span>🇪🇬</span><span>🇯🇴</span><span>🇲🇳</span><span>🇴🇲</span><span>🇹🇼</span><span>🇯🇵</span><span>🇺🇸</span><span>🇻🇳</span><span>🇹🇭</span>
+    </div>
+
+    <hr class="border_color" style="margin-top: 2rem;">
 
     <h2 style="font-size: 18px; font-weight: bold;">Writing</h2>
     <ul>
@@ -79,11 +95,9 @@ posts.sort((a, b) => {
       })
     }
     </ul>
-    <br>
 
-    <div class="prose">
-      <hr />
-      <br>
+    <hr class="border_color">
+
       <footer>
         <div class="name-container">
           <span>Max Twelftree</span>
@@ -103,7 +117,6 @@ posts.sort((a, b) => {
           </a>
         </div>
       </footer>
-    </div>
   </main>
 <style>
 footer {
@@ -130,4 +143,11 @@ footer a {
 
 footer a i {
   font-size: 24px; /* Adjust the icon size as needed */
+}
+
+.travels-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 1.4rem;
 }
