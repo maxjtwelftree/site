@@ -23,7 +23,7 @@ export type Project = z.infer<typeof projectSchema>;
 export async function getProjects(): Promise<Project[]> {
   return [
     {
-      repo: "MIT Media Lab research",
+      repo: "MIT media lab research",
       link: "https://github.com/zlshinnick/ai-safety",
       description: "Exploring and adapting safety within AI systems",
     },

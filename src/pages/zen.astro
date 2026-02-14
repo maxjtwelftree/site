@@ -44,6 +44,12 @@ const description = "A mindfulness app inspired by the late Thich Nhat Hanh";
       <img src="/zen/IMG_0369.JPG" alt="" loading="lazy" />
     </div>
 
+    <div class="zen-screenshot-grid">
+      <img src="/zen/screenshot-home.png" alt="Komorebi home screen" loading="lazy" />
+      <img src="/zen/screenshot-breathe.png" alt="Komorebi breathe screen" loading="lazy" />
+      <img src="/zen/screenshot-presence.png" alt="Komorebi presence screen" loading="lazy" />
+    </div>
+
     <div class="zen-link">
       <Link href="https://github.com/maxjtwelftree/zen">View on GitHub →</Link>
     </div>
@@ -81,6 +87,19 @@ const description = "A mindfulness app inspired by the late Thich Nhat Hanh";
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 10px;
+  }
+
+  .zen-screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 2rem 0;
+  }
+
+  .zen-screenshot-grid img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
   }
 
   .zen-link {
