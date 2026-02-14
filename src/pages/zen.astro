@@ -1,17 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Link from '../components/Link.astro';
+import Link from "../components/Link.astro";
 const title = "Komorebi";
 const description = "A mindfulness app inspired by the late Thich Nhat Hanh";
 ---
 
 <BaseLayout title={title} description={description}>
-<h1 slot="header-content" class="text-gray-600 dark:text-gray-500 mt-2"><Link href="/">Max Twelftree</Link></h1>
-  <main class="py-10 zaduma-prose">
-
-    <h2 class="text-2xl font-bold mb-1">Komorebi</h2>
-    <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">Inspired by the late Thich Nhat Hanh.</p>
-    <p class="text-gray-500 dark:text-gray-400 text-sm italic mb-8">A reminder to breathe and stay grounded throughout the day, regardless of the activity or environment around you.</p>
+  <h1 slot="header-content" class="mt-2 text-gray-600 dark:text-gray-500">
+    <Link href="/">Max Twelftree</Link>
+  </h1>
+  <main class="zaduma-prose py-10">
+    <h2 class="mb-1 text-2xl font-bold">Komorebi</h2>
+    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+      Inspired by the late Thich Nhat Hanh.
+    </p>
+    <p class="mb-8 text-sm italic text-gray-500 dark:text-gray-400">
+      A reminder to breathe and stay grounded throughout the day, regardless of
+      the activity or environment around you.
+    </p>
 
     <div class="zen-photo-single">
       <img src="/zen/IMG_0380.JPG" alt="Thich Nhat Hanh" loading="lazy" />
@@ -19,15 +25,23 @@ const description = "A mindfulness app inspired by the late Thich Nhat Hanh";
     </div>
 
     <p>
-      After finishing my degree I wanted to find something that genuinely helped me feel calm and present. Listening to his Dharma talks gave me that. This app is a small attempt to carry some of that stillness into daily life — a quiet nudge to slow down and breathe, especially as things get busier.
+      After finishing my degree I wanted to find something that genuinely helped
+      me feel calm and present. Listening to his Dharma talks gave me that. This
+      app is a small attempt to carry some of that stillness into daily life — a
+      quiet nudge to slow down and breathe, especially as things get busier.
     </p>
 
     <div class="zen-photo-single">
-      <img src="/zen/D91A70BF-660E-4EC1-A045-E8582D7187AE.GIF" alt="" loading="lazy" />
+      <img
+        src="/zen/D91A70BF-660E-4EC1-A045-E8582D7187AE.GIF"
+        alt=""
+        loading="lazy"
+      />
     </div>
 
     <p>
-      His teachings, along with those of Eckhart Tolle and Sodo Yokoyama, have shaped how I aim to move through the day.
+      His teachings, along with those of Eckhart Tolle and Sodo Yokoyama, have
+      shaped how I aim to move through the day.
     </p>
 
     <div class="zen-photo-single">
@@ -35,7 +49,8 @@ const description = "A mindfulness app inspired by the late Thich Nhat Hanh";
     </div>
 
     <p>
-      The photos above reflect the feeling behind the app. For greater ideas on the mood I wanted to capture within the application:
+      The photos above reflect the feeling behind the app. For greater ideas on
+      the mood I wanted to capture within the application:
     </p>
 
     <div class="zen-photo-grid">
@@ -45,15 +60,27 @@ const description = "A mindfulness app inspired by the late Thich Nhat Hanh";
     </div>
 
     <div class="zen-screenshot-grid">
-      <img src="/zen/screenshot-home.png" alt="Komorebi home screen" loading="lazy" />
-      <img src="/zen/screenshot-breathe.png" alt="Komorebi breathe screen" loading="lazy" />
-      <img src="/zen/screenshot-presence.png" alt="Komorebi presence screen" loading="lazy" />
+      <img
+        src="/zen/screenshot-home.png"
+        alt="Komorebi home screen"
+        loading="lazy"
+      />
+      <img
+        src="/zen/screenshot-breathe.png"
+        alt="Komorebi breathe screen"
+        loading="lazy"
+      />
+      <img
+        src="/zen/screenshot-presence.png"
+        alt="Komorebi presence screen"
+        loading="lazy"
+      />
     </div>
 
     <div class="zen-link">
+      <p>Check it out on GitHub!</p>
       <Link href="https://github.com/maxjtwelftree/zen">View on GitHub →</Link>
     </div>
-
   </main>
 </BaseLayout>
 
@@ -70,7 +97,7 @@ const description = "A mindfulness app inspired by the late Thich Nhat Hanh";
 
   .zen-caption {
     font-size: 0.8rem;
-    color: #9B9590;
+    color: #9b9590;
     font-style: italic;
     margin-top: 0.5rem;
   }
