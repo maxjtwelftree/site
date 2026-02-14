@@ -1,11 +1,11 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 // Define a schema for individual writings
 const writingSchema = z.object({
   title: z.string(),
-  date: z.string(),  // ISO format date string (e.g., "2023-04-20")
-  description: z.string(),
-  link: z.string().optional(),  // Link to the full writing, optional
+  date: z.string(), // ISO format date string (e.g., "2023-04-20")
+  description: z.string().optional(),
+  link: z.string().optional(), // Link to the full writing, optional
 });
 
 // Use z.infer to create a TypeScript type from the schema
