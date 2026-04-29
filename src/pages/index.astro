@@ -1,23 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Project from "../components/Project.astro";
 import Writing from "../components/Writing.astro";
-import Experience from "../components/Experience.astro";
-import { getProjects } from '../lib/projects';
 import { getWritings } from '../lib/writings';
-import { getExperience } from '../lib/experience';
 import Link from '../components/Link.astro';
-import { Paragraph } from "../lib/prose/Paragraph";
 import { formatDate } from "../lib/formatDate";
 import border_color from '../components/Link.astro';
 
 
 let posts = await Astro.glob<PostFrontmatter>("../../posts/**/*.mdx");
-const projects = await getProjects();
 const writings =  await getWritings();
-const experience = await getExperience();
 const title = "Max Twelftree";
-const description = "My small website for projects, experience and further information";
+const description = "Machine learning engineer/research scientist — inference, post-training, GPUs";
 
 if (import.meta.env.PROD) {
   posts = posts.filter((post) => !post.frontmatter.draft);
@@ -33,30 +26,19 @@ posts.sort((a, b) => {
 ---
 
 <BaseLayout title={title} description={description}>
-<h1 slot="header-content" class="text-gray-600 dark:text-gray-500 mt-2"><Link href="/">Max Twelftree</Link></h1>
+  <h1 slot="header-content" class="text-gray-600 dark:text-gray-500 mt-2"><Link href="/">Max Twelftree</Link></h1>
   <main class="py-10 zaduma-prose">
     <p class="text-gray-600 dark:text-gray-500 mb-2" style="font-size: 12px;"> ◕ ◡ ◕ っ </p>
     <p>
-      Hey, I’m <strong>Max!</strong> I'm currently a software engineer based in Australia 🇦🇺. Recently I completed a <i>Bachelors degree in Mathematics and Computer Science</i> from the <strong>University of Adelaide</strong>. I have a strong passion for new technologies particularly those in machine learning infrastructure, as well as design and its relationship to software engineering.
+      Hey, I'm <strong>Max!</strong> I'm a machine learning engineer/research scientist at <Link href="https://maincode.com">Maincode</Link> 🇦🇺.
+      I graduated from the <strong>University of Adelaide</strong> with a Bachelors degree in Mathematics and Computer Science, where I focused on machine learning and philosophy.
     </p>
     <p>
-    Besides software, I enjoy <em><Link href="/travels" style="italic">travelling,</Link></em> fitness, religion, philosophy, geo-politics, and other parts of design. Please <strong>reach out</strong> if you're interested in collaborating or just want to talk.
-    <br>
+      I love inference, post-training, and GPUs. For more of what I work on, see my <Link href="https://twitter.com/mxwelllllll">X</Link> or <Link href="https://www.linkedin.com/in/maxjtwelftree/">LinkedIn</Link>.
     </p>
-
-    <hr class="border_color">
-
-    <h2 style="font-size: 18px; font-weight: bold;">Experience</h2>
-    <div class="divide-y divide-gray-200 dark:divide-gray-800">
-      {experience.map(exp => <Experience experience={exp} />)}
-    </div>
-
-    <hr class="border_color">
-
-    <h2 style="font-size: 18px; font-weight: bold;">Projects</h2>
-    <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-      {projects.map(project => <Project project={project} />)}
-    </div>
+    <p>
+      Reach me at <Link href="mailto:max@maincode.com">max@maincode.com</Link> or <Link href="mailto:maxjtwelftree@gmail.com">maxjtwelftree@gmail.com</Link>.
+    </p>
 
     <hr class="border_color">
 
@@ -98,56 +80,57 @@ posts.sort((a, b) => {
 
     <hr class="border_color">
 
-      <footer>
-        <div class="name-container">
-          <span>Max Twelftree</span>
-        </div>
-        <div class="icons-container">
-          <a href="mailto:maxjtwelftree@gmail.com" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-          </a>
-          <a href="https://github.com/maxjtwelftree" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/maxjtwelftree/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://twitter.com/mxwelllllll" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </div>
-      </footer>
+    <footer>
+      <div class="name-container">
+        <span>Max Twelftree</span>
+      </div>
+      <div class="icons-container">
+        <a href="mailto:maxjtwelftree@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://twitter.com/mxwelllllll" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://github.com/maxjtwelftree" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/maxjtwelftree/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </footer>
   </main>
 <style>
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0; /* Remove padding to align with the footer line */
-}
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+  }
 
-footer .name-container {
-  margin-left: 0px; /* Add margin to the left of the name */
-}
+  footer .name-container {
+    margin-left: 0px;
+  }
 
-footer .icons-container {
-  display: flex;
-  gap: 20px;
-  margin-right: 0px; /* Add margin to the right of the icons */
-}
+  footer .icons-container {
+    display: flex;
+    gap: 20px;
+    margin-right: 0px;
+  }
 
-footer a {
-  margin: 0; /* Reset any default margins */
-  color: inherit; /* Inherit text color from parent, or set a specific color */
-}
+  footer a {
+    margin: 0;
+    color: inherit;
+  }
 
-footer a i {
-  font-size: 24px; /* Adjust the icon size as needed */
-}
+  footer a i {
+    font-size: 24px;
+  }
 
-.travels-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  font-size: 1.4rem;
-}
+  .travels-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 1.4rem;
+  }
+</style>
