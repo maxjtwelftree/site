@@ -1,16 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Writing from "../components/Writing.astro";
-import { getWritings } from '../lib/writings';
 import Link from '../components/Link.astro';
 import { formatDate } from "../lib/formatDate";
-import border_color from '../components/Link.astro';
+import type { PostFrontmatter } from "../types";
 
 
 let posts = await Astro.glob<PostFrontmatter>("../../posts/**/*.mdx");
-const writings =  await getWritings();
 const title = "Max Twelftree";
-const description = "Machine learning engineer/research scientist — inference, post-training, GPUs";
+const description = "Machine learning engineer/research scientist — inference, model architecture, GPUs";
 
 if (import.meta.env.PROD) {
   posts = posts.filter((post) => !post.frontmatter.draft);
@@ -23,6 +20,28 @@ posts.sort((a, b) => {
   );
 });
 
+const externalWritings = [
+  {
+    title: "Same Dictionary, Different Geometry",
+    date: "2026-06-10",
+    path: "https://maincode.com/blog/same-dictionary-different-geometry",
+  },
+  {
+    title: "MC-2: Australian Based Inference",
+    date: "2026-05-25",
+    path: "https://maincode.com/blog/mc-2-australian-based-inference",
+  },
+];
+
+const allWritings = [
+  ...posts.map(({ frontmatter }) => ({
+    title: frontmatter.title,
+    date: frontmatter.date,
+    path: frontmatter.path,
+  })),
+  ...externalWritings,
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
 ---
 
 <BaseLayout title={title} description={description}>
@@ -34,7 +53,7 @@ posts.sort((a, b) => {
       I graduated from the <strong>University of Adelaide</strong> with a Bachelors degree in Mathematics and Computer Science, where I focused on machine learning and philosophy.
     </p>
     <p>
-      I love inference, post-training, and GPUs. Reach out to me via <Link href="mailto:max@maincode.com">max@maincode.com</Link>.
+      I love inference, model architecture, and GPUs. Reach out to me via <Link href="mailto:max@maincode.com">max@maincode.com</Link>.
     </p>
 
     <hr class="border_color">
@@ -49,18 +68,18 @@ posts.sort((a, b) => {
 
     <h2 style="font-size: 18px; font-weight: bold;">Writing</h2>
     <ul>
-      {posts.map(({ frontmatter }) => {
-        const date = new Date(frontmatter.date);
+      {allWritings.map((writing) => {
+        const date = new Date(writing.date);
 
         return (
           <li class="flex justify-between items-center">
             <Link
-              href={frontmatter.path}
+              href={writing.path}
               class="flex-grow"
               noUnderline
             >
               <h2 class="text-gray-800 dark:text-gray-300 font-sans mb-4">
-                {frontmatter.title}
+                {writing.title}
               </h2>
             </Link>
             <time
@@ -93,6 +112,9 @@ posts.sort((a, b) => {
         </a>
         <a href="https://www.linkedin.com/in/maxjtwelftree/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://scholar.google.com/citations?user=1Z1qw3rI5gEC&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+          <i class="fas fa-graduation-cap"></i>
         </a>
       </div>
     </footer>
